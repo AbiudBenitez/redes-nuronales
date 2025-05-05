@@ -1,21 +1,19 @@
 # entrenar_modelo_sat_tabula.py
 
 import pandas as pd
-import tabula
 from sklearn.preprocessing import LabelEncoder
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, Embedding, GlobalAveragePooling1D, Dense
 import pickle
-import os
 
 # === CONFIGURACIONES ===
 CODES_PATH = (
-    "C:/Users/abiud/Documents/Code/redes-nuronales/Proyecto/codigo_agrupador.xlsx"
+    "files/codigo_agrupador.xlsx"
 )
 EXCEL_PATH = (
-    "C:/Users/abiud/Documents/Code/redes-nuronales/Proyecto/Archivo Anual 2024.xlsx"
+    "files/Archivo Anual 2024.xlsx"
 )
 EXCEL_HOJA_DATOS = "BZ"  # Cambia por el nombre real de la hoja con "Número de cuenta"
 EXCEL_HOJA_CLASIFICACION = "Clasificaciones"
