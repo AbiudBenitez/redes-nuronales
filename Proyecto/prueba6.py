@@ -64,3 +64,12 @@ model.fit(X, y, epochs=10, batch_size=32)
 
 # === 6. GUARDAR MODELO Y OBJETOS ===
 print("💾 Guardando modelo y componentes...")
+model.save("modelo_bz_clasificacion.h5")
+
+with open("tokenizer.pkl", "wb") as f:
+    pickle.dump(tokenizer, f)
+
+with open("label_encoder.pkl", "wb") as f:
+    pickle.dump(label_encoder, f)
+
+print("✅ ¡Modelo entrenado y guardado correctamente!")
