@@ -37,6 +37,9 @@ df.dropna(subset=[LABEL_OBJETIVO], inplace=True)
 # === 2. CREAR TEXTO DE ENTRADA ===
 df["InputText"] = df["Número de cuenta"] + " " + df["Nombre de Cuenta"]
 
+print("📋 Ejemplos de InputText:")
+print(df["InputText"].unique()[:10])
+
 # === 3. TOKENIZACIÓN ===
 tokenizer = Tokenizer(num_words=NUM_WORDS, oov_token="<OOV>")
 tokenizer.fit_on_texts(df["InputText"])
@@ -47,6 +50,14 @@ X = pad_sequences(X_seq, maxlen=MAX_LEN, padding="post")
 label_encoder = LabelEncoder()
 y = label_encoder.fit_transform(df[LABEL_OBJETIVO])
 num_classes = len(label_encoder.classes_)
+
+import numpy as np
+import collections
+
+print("📊 Distribución de clases:")
+conteo = collections.Counter(y)
+for clase, cantidad in conteo.items():
+    print(f"- {label_encoder.inverse_transform([clase])[0]}: {cantidad}")
 
 print(f"🔢 Registros para entrenamiento: {len(X)} | Clases: {num_classes}")
 
