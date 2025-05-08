@@ -172,3 +172,10 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Ignorar carpeta de embeddings preentrenados
+glove.6B/
+
+# Ignorar archivos serializados de modelos y tokenizer
+*.pkl
+*.h5
