@@ -5,7 +5,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 # === CONFIGURACIÓN ===
-MODEL_PATH = "modelo_bz_clasificacion.h5"
+MODEL_PATH = "modelo_mejorado.h5"
 TOKENIZER_PATH = "tokenizer.pkl"
 ENCODER_PATH = "label_encoder.pkl"
 MAX_LEN = 20
