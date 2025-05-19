@@ -1,14 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Clasificación Contable + PR/PNR</title>
+    <title>Clasificador Contable + PR/PNR</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilos.css') }}">
+    <style>
+        .preview {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .preview th, .preview td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+        .preview th {
+            background-color: #f0f0f0;
+        }
+    </style>
 </head>
 <body>
-    <h2>🔍 Clasificador Contable</h2>
-    <form method="POST" enctype="multipart/form-data">
-        <label>Sube tu archivo Excel (.xlsx):</label><br>
-        <input type="file" name="archivo" accept=".xlsx" required><br><br>
-        <input type="submit" value="Ejecutar predicción">
-    </form>
+    <div class="container">
+        <h2>Clasificador Contable</h2>
+
+        <form method="POST" enctype="multipart/form-data">
+            <label>Sube tu archivo Excel (.xlsx):</label><br>
+            <input type="file" name="archivo" accept=".xlsx" required><br><br>
+            <input type="submit" value="Ejecutar predicción">
+        </form>
+
+        {% if tabla_html %}
+    <h3>Vista previa de predicciones:</h3>
+    <div class="table-wrapper">
+        {{ tabla_html|safe }}
+    </div>
+    <br>
+    <a href="{{ url_for('descargar') }}"><button>💾 Descargar archivo completo</button></a>
+{% endif %}
+    </div>
+
+    {% if error %}
+    <script>
+        alert("{{ error }}");
+    </script>
+    {% endif %}
 </body>
 </html>
